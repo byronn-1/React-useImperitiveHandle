@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Counter from './Counter';
+import CustomInput from './CustomInput';
 
 function App() {
+
+  const counterRef = useRef();
+  const customInputRef = useRef();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Counter ref={counterRef} />
+      <CustomInput ref={customInputRef} placeholder="Type something..." />
+      <button onClick={() => {
+        counterRef.current.reset();
+        customInputRef.current.reset();
+      }}>
+        Reset
+      </button>
+    </>
   );
 }
 
